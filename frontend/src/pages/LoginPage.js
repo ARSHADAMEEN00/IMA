@@ -87,7 +87,7 @@ export default function LoginPage() {
         <Container maxWidth="sm">
           <StyledContent>
             <Typography variant="h4" gutterBottom>
-              Sign in to Installment managing app
+              Sign in to IMA
             </Typography>
 
             <Typography variant="body2" sx={{ mb: 5 }}>

@@ -85,17 +85,13 @@ const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
         component="div"
         sx={{
           width: '100%',
-          height: 40,
+          height: 50,
           display: 'inline-flex',
           ...sx,
         }}
         {...other}
       >
-        {/* <img src={'/assets/logo-black2.png'} alt="logo" /> */}
-
-        <Typography component="span" variant="body2" sx={{ color: 'text.secondary' }}>
-          EMI MANAGEMENT SYSTEM
-        </Typography>
+        <img src={'/assets/logo.png'} alt="logo" />
       </Box>
     </Link>
   );
