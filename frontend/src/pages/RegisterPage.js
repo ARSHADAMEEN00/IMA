@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet-async';
 import { styled } from '@mui/material/styles';
 import { Link, Container, Typography } from '@mui/material';
 // components
-import Logo from '../components/logo';
 // sections
 import RegisterForm from '../sections/auth/register/RegisterForm';
 
