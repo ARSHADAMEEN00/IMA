@@ -3,7 +3,7 @@ import { useGetToken } from '../../hooks/useHandleSessions';
 
 // apply base url for axios
 export const TOKEN_PREFIX = 'vk-en-t';
-const API_URL_DEV = 'https://installment-managing-app.onrender.com';
+const API_URL_DEV = 'https://installment-managing-app.onrender.com/api';
 
 const axios = axiosApi.create({
   baseURL: API_URL_DEV,
