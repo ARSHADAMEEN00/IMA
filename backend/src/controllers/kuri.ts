@@ -73,22 +73,49 @@ interface KuriBody {
   startDate: Date
 }
 
-function createInstallments(totalAmount: number, emiAmount: number, startDate: Date) {
-  const totalInstallments = Math.ceil(totalAmount / emiAmount);
-  const installments = [];
+// function createInstallments(totalAmount: number, emiAmount: number, startDate: Date) {
+//   const totalInstallments = Math.ceil(totalAmount / emiAmount);
+//   const installments = [];
+//   const currentDate = new Date(startDate);
+
+//   for (let i = 1; i <= totalInstallments; i++) {
+//     const installment = {
+//       InstallmentNo: i,
+//       isCompleted: false,
+//       date: i === 1 ? currentDate : currentDate.setMonth(currentDate.getMonth() + 1)
+//     };
+
+//     installments.push(installment);
+//   }
+
+//   return installments;
+// }
+function generateInstallments(totalAmount: number, emiAmount: number, startDate: Date) {
+  const totalInstallment = [];
   const currentDate = new Date(startDate);
+  let remainingAmount = totalAmount;
 
-  for (let i = 1; i <= totalInstallments; i++) {
-    const installment = {
-      InstallmentNo: i,
+  let installmentNo = 1;
+  while (remainingAmount > 0) {
+    totalInstallment.push({
+      InstallmentNo: installmentNo,
       isCompleted: false,
-      date: i === 1 ? currentDate : currentDate.setMonth(currentDate.getMonth() + 1)
-    };
+      date: currentDate.toISOString().split('T')[0], // Format the date as "YYYY-MM-DD"
+    });
 
-    installments.push(installment);
+    remainingAmount -= emiAmount;
+    installmentNo++;
+
+    // Move to the next month
+    currentDate.setMonth(currentDate.getMonth() + 1);
   }
 
-  return installments;
+  // Mark the last installment as completed if it covers the remaining amount
+  // if (remainingAmount <= 0) {
+  //   totalInstallment[totalInstallment.length - 1].isCompleted = true;
+  // }
+
+  return totalInstallment;
 }
 
 
@@ -106,7 +133,8 @@ export const createKuri: RequestHandler<unknown, unknown, KuriBody, unknown> = a
     // const emiAmount = 200;
     // const startDate = '2023-01-01';
 
-    const installments = createInstallments(totalAmount, emiAmount, startDate);
+    // const installments = createInstallments(totalAmount, emiAmount, startDate);
+    const installments = generateInstallments(totalAmount, emiAmount, startDate);
 
     const newKuri = await KuriSchemaModel.create({
       name,

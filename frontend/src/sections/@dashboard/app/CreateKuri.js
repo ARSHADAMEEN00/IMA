@@ -8,6 +8,8 @@ import { LoadingButton } from '@mui/lab';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
+import moment from 'moment';
+import { useEffect } from 'react';
 
 // @mui
 import { Stack, TextField, Alert } from '@mui/material';
@@ -42,7 +44,18 @@ export default function CreateEmiModal({ open, setOpen }) {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+    reset,
+  } = useForm({});
+
+  useEffect(() => {
+    reset({
+      startDate: moment(),
+      name: '',
+      totalAmount: '',
+      emiAmount: '',
+      description: '',
+    });
+  }, [reset]);
 
   const onSubmit = async (formData, e) => {
     e?.preventDefault();

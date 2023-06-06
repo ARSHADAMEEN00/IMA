@@ -125,7 +125,7 @@ function DashboardContent() {
               </Typography>
               {loading && (
                 <Typography sx={{ mt: 2, maxWidth: '150px' }} variant="caption" display="block" gutterBottom>
-                  updating...
+                  loading...
                   <LinearProgress color="success" size="sm" sx={{ borderRadius: '10px' }} />
                 </Typography>
               )}
