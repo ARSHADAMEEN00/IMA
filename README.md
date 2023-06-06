@@ -1,4 +1,4 @@
-# IMA
+# <a target="_blank" href="https://kuriapp.netlify.app/">IMA </a>
 Installment managing app
 
 IMA (Instalment Managing App) is a user-friendly mobile application designed to simplify and streamline the management of instalment payments or EMIs (Equated Monthly Installments). The app provides a convenient way for users to keep track of their ongoing instalments and stay organized with their payment schedules.
