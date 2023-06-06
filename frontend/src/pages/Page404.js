@@ -24,7 +24,7 @@ export default function Page404({ isInner }) {
     <>
       {!isInner && (
         <Helmet>
-          <title> 404 Page Not Found | Minimal UI </title>
+          <title> 404 Page Not Found |IMA </title>
         </Helmet>
       )}
 
