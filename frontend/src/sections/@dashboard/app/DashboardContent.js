@@ -91,6 +91,15 @@ function DashboardContent() {
     dispatch(deleteKuri(credentials));
   };
 
+  const handleCompletedEmi = (emiList) => {
+    const count = emiList?.filter((i) => i?.isCompleted === true);
+    return count?.length;
+  };
+  const handlePendingEmi = (emiList) => {
+    const count = emiList?.filter((i) => i?.isCompleted === false);
+    return count?.length;
+  };
+
   return (
     <div style={{ position: 'relative', minHeight: '200px' }}>
       <DeleteConfirm
@@ -122,6 +131,18 @@ function DashboardContent() {
               </Typography>
               <Typography variant="subtitle1" gutterBottom>
                 {item?.description}
+              </Typography>
+              <Typography sx={{ mb: 0 }} variant="caption" display="block" gutterBottom>
+                Installment Completed Amount
+              </Typography>
+              <Typography variant="h5" color={'green'} sx={{ fontWeight: 600 }} gutterBottom>
+                ₹ {item?.emiAmount * handleCompletedEmi(item?.installments)}
+              </Typography>
+              <Typography sx={{ mb: 0 }} variant="caption" display="block" gutterBottom>
+                Installment Pending Amount
+              </Typography>
+              <Typography variant="h5" color={'red'} sx={{ fontWeight: 600 }} gutterBottom>
+                ₹ {item?.emiAmount * handlePendingEmi(item?.installments)}
               </Typography>
               {loading && (
                 <Typography sx={{ mt: 2, maxWidth: '150px' }} variant="caption" display="block" gutterBottom>
