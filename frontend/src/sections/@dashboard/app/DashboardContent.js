@@ -151,6 +151,7 @@ function DashboardContent() {
                 </Typography>
               )}
             </Box>
+
             <Box sx={{ width: '100%' }}>
               <Typography sx={{ mb: 0 }} variant="caption" display="block" gutterBottom>
                 Total Amount
@@ -194,40 +195,54 @@ function DashboardContent() {
           </Stack>
           <Divider />
 
-          <Typography sx={{ mt: 2 }} variant="h6" display="block" gutterBottom>
-            Installments
-          </Typography>
-          <Grid container spacing={3}>
-            {item?.installments?.map((install, index) => (
-              <Grid
-                item
-                xs={6}
-                sm={6}
-                key={index}
-                md={3}
-                style={{
-                  cursor: 'pointer',
-                }}
-                onClick={() => handleUpdateInstallmentStatus(!install?.isCompleted, item?._id, install)}
-              >
-                <Card
-                  sx={{
-                    py: 5,
-                    boxShadow: 0,
-                    textAlign: 'center',
-                    color: (theme) => theme.palette[install?.isCompleted ? 'primary' : 'grey'].darker,
-                    bgcolor: (theme) => theme.palette[install?.isCompleted ? 'primary' : 'grey'].lighter,
+          {item?.isCompleted ? (
+            <>
+              <Typography sx={{ mt: 2, color: item?.isCompleted && 'green' }} variant="h6" display="block" gutterBottom>
+                Installments Completed
+              </Typography>
+              <Typography variant="caption">started at {moment(item?.installments[0]?.date).format('ll')} </Typography>
+              <br />
+              <Typography variant="caption">
+                ended at {moment(item?.installments[item?.installments?.length]?.date).format('ll')}{' '}
+              </Typography>
+            </>
+          ) : (
+            <Typography sx={{ mt: 2 }} variant="h6" display="block" gutterBottom>
+              Installments
+            </Typography>
+          )}
+          {!item?.isCompleted && (
+            <Grid container spacing={3}>
+              {item?.installments?.map((install, index) => (
+                <Grid
+                  item
+                  xs={6}
+                  sm={6}
+                  key={index}
+                  md={3}
+                  style={{
+                    cursor: 'pointer',
                   }}
+                  onClick={() => handleUpdateInstallmentStatus(!install?.isCompleted, item?._id, install)}
                 >
-                  <Typography variant="h3">
-                    {install?.InstallmentNo ? fShortenNumber(install?.InstallmentNo) : 0}
-                  </Typography>
+                  <Card
+                    sx={{
+                      py: 5,
+                      boxShadow: 0,
+                      textAlign: 'center',
+                      color: (theme) => theme.palette[install?.isCompleted ? 'primary' : 'grey'].darker,
+                      bgcolor: (theme) => theme.palette[install?.isCompleted ? 'primary' : 'grey'].lighter,
+                    }}
+                  >
+                    <Typography variant="h3">
+                      {install?.InstallmentNo ? fShortenNumber(install?.InstallmentNo) : 0}
+                    </Typography>
 
-                  <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-                    {moment(install?.date).format('ll')}
-                  </Typography>
+                    <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
+                      {moment(install?.date).format('ll')}
+                    </Typography>
 
-                  {/* <FormControlLabel
+                    {/* <FormControlLabel
                     control={
                       <Checkbox
                         label="Success"
@@ -238,15 +253,16 @@ function DashboardContent() {
                     }
                     label="Completed"
                   /> */}
-                  {install?.isCompleted && (
-                    <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-                      Completed
-                    </Typography>
-                  )}
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
+                    {install?.isCompleted && (
+                      <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
+                        Completed
+                      </Typography>
+                    )}
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+          )}
         </Box>
       ))}
       {kuriList?.length <= 0 && (
