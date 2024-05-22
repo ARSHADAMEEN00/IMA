@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
 // @mui
-import { Link, Stack, IconButton, InputAdornment, TextField, Checkbox, Tooltip, Alert } from '@mui/material';
+import { Stack, IconButton, InputAdornment, TextField, Alert } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
 // store
@@ -158,18 +158,19 @@ export default function RegisterForm() {
           </Stack>
         </Stack>
 
-        <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ my: 2 }}>
+        {/* <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ my: 2 }}>
           <Tooltip placement="right-start" title="Remember me">
             <Checkbox name="remember" label="Remember me" />
           </Tooltip>
           <Link variant="subtitle2" underline="hover" sx={{ cursor: 'pointer' }}>
             Forgot password?
           </Link>
-        </Stack>
+        </Stack> */}
 
         <LoadingButton
           sx={{
             backgroundColor: '#418e8c',
+            mt: 5,
           }}
           fullWidth
           size="large"
