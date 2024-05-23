@@ -1,10 +1,10 @@
 import app from "./app";
 import mongoose from "mongoose";
-import env from "./util/validateEnv";
 import { dbConnection } from "./config/dbConnection";
 import { logEvents } from "./middleware/logger";
+import env from "./util/validateEnv";
 
-const port = env.PORT || 8000;
+const port = env.PORT || 3500;
 
 dbConnection()
 
