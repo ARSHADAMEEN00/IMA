@@ -31,7 +31,7 @@ app.use(session({
   },
   rolling: true,
   store: MongoStore.create({
-    mongoUrl: env.MONGO_CONNECTION_STRING,
+    mongoUrl: 'mongodb+srv://AmeenArshad:Ameenarshad99@graphqltut.f5ceozn.mongodb.net/emi_management?retryWrites=true&w=majority',
   })
 }))
 

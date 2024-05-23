@@ -3,7 +3,7 @@ import env from "../util/validateEnv";
 
 export const dbConnection = () => {
     mongoose
-        .connect(env.MONGO_CONNECTION_STRING, {
+        .connect('mongodb+srv://AmeenArshad:Ameenarshad99@graphqltut.f5ceozn.mongodb.net/emi_management?retryWrites=true&w=majority', {
             // useNewUrlParser: true,
             // useCreateIndex: true,
             // useUnifiedTopology: true,
