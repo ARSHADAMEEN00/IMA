@@ -16,8 +16,11 @@ import { authenticateUser } from "./middleware/verifyAuth";
 import { logger } from "./middleware/logger";
 import { errorHandler } from "./middleware/errorHandler";
 import { corsOptions } from "./config/corsOption";
+import { setupCronJob } from "./util/cronJobs";
 
 const app = express();
+
+setupCronJob();
 
 app.use(session({
   secret: env.JWT_KEY,
@@ -46,6 +49,7 @@ app.use("/api/kuri", authenticateUser, emiRoutes);
 
 app.use('/static', staticRoutes.default)
 app.all("*", staticRoutes.notFound)
+
 
 app.use((req, res, next) => {
   next(
