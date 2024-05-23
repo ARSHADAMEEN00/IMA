@@ -4,7 +4,7 @@ import env from "./util/validateEnv";
 import { dbConnection } from "./config/dbConnection";
 import { logEvents } from "./middleware/logger";
 
-const port = env.PORT || 8000;
+const port = 3100;
 
 dbConnection()
 
