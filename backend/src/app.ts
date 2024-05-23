@@ -20,7 +20,7 @@ import { setupCronJob } from "./util/cronJobs";
 
 const app = express();
 
-// setupCronJob();
+setupCronJob();
 
 app.use(session({
   secret: env.JWT_KEY,
