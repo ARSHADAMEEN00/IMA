@@ -7,7 +7,7 @@
     "start": "nodemon src/server.ts",
     "eslint": "npx eslint . --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm i && tsc --build"
+    "build": "rm -rf node_modules && npm install && npm update mongodb && tsc --build"
   },
   "keywords": [],
   "author": "",
