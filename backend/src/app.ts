@@ -43,6 +43,14 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/kuri", authenticateUser, emiRoutes);
 
+app.use("/profile/demo", (req, res) => {
+  res.send({
+    msg: 'demo'
+  });
+  console.log('demo');
+});
+
+
 // app.use("/api/admin/kudumbashree", authenticateUser, isAdminProtected, kudumbashreeRoutes);
 // app.use("/api/admin/user", authenticateUser, isAdminProtected, userRoutes);
 
